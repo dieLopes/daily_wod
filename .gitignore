@@ -33,5 +33,5 @@ instance/
 migrations/
 alembic_version/
 
-# .env
+# Arquivo de variáveis de ambiente
 .env
