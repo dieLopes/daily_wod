@@ -71,9 +71,7 @@ def test_hash_password():
     password = "supersecret"
     hashed = hash_password(password)
     
-    # O hash não deve ser igual ao texto original
     assert hashed != password
-    # E deve ser possível verificar a senha original com o hash gerado
     assert verify_password(password, hashed)
 
 def test_verify_password_correct():
@@ -90,11 +88,13 @@ def test_create_access_token():
     data = {"sub": "testuser"}
     token = create_access_token(data=data, expires_delta=timedelta(minutes=5))
     
-    # O token não deve ser vazio
     assert token is not None
     assert isinstance(token, str)
 
-    # E deve ser decodificável com a mesma SECRET_KEY e ALGORITHM
-    decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+    alg = settings.ALGORITHM
+    if alg is None:
+        alg = "HS256"
+
+    decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=[alg])
     assert decoded["sub"] == "testuser"
     assert "exp" in decoded
