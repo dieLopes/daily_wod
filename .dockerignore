@@ -1,0 +1,25 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environment
+env/
+venv/
+
+# Editor/IDE files
+.idea/
+.vscode/
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Docker files
+docker-compose.yml
+Makefile
+.git/
