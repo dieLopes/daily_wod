@@ -15,7 +15,7 @@ def db():
     return MagicMock()
 
 @pytest.fixture
-def mock_user(db):
+def mock_user(db: MagicMock):
     """Mock de um usuário encontrado no banco."""
     user = User(
         id=1,
@@ -28,7 +28,7 @@ def mock_user(db):
 
 @patch("app.services.auth_service.SECRET_KEY", None)
 @patch("app.services.auth_service.ALGORITHM", None)
-def test_jwt_configuration_error(monkeypatch, db):
+def test_jwt_configuration_error(monkeypatch: pytest.MonkeyPatch, db: MagicMock):
     """Deve lançar erro 500 se variáveis SECRET_KEY ou ALGORITHM não estiverem configuradas."""
 
     monkeypatch.delenv("SECRET_KEY", raising=False)
@@ -42,7 +42,7 @@ def test_jwt_configuration_error(monkeypatch, db):
     assert exc_info.value.status_code == 500
     assert "não configuradas" in exc_info.value.detail.lower()
 
-def test_get_current_user(mock_user, db):
+def test_get_current_user(mock_user: User, db: MagicMock):
     """Deve retornar o usuário autenticado corretamente."""
 
     credentials = HTTPAuthorizationCredentials(scheme="Bearer", credentials="valid_token")
@@ -53,7 +53,7 @@ def test_get_current_user(mock_user, db):
     assert user.username == mock_user.username
     assert user.email == mock_user.email
 
-def test_get_current_user_user_not_found(db):
+def test_get_current_user_user_not_found(db: MagicMock):
     """Deve lançar erro 404 se o usuário não for encontrado."""
 
     credentials = HTTPAuthorizationCredentials(scheme="Bearer", credentials="valid_token")
