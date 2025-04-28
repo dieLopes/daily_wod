@@ -32,3 +32,6 @@ instance/
 # Alembic
 migrations/
 alembic_version/
+
+# .env
+.env
