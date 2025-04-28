@@ -9,3 +9,6 @@ pytest
 pytest-asyncio
 pytest-cov
 requests
+passlib
+bcrypt==3.2.0
+PyJWT

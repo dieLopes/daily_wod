@@ -48,6 +48,12 @@ docker-compose up --build
 http://localhost:8000/docs
 ```
 
+## Geração de migrations com Alembic
+
+```bash
+alembic revision -m "Some text"
+```
+
 ## Endpoints
 
 ### 1. WODs
