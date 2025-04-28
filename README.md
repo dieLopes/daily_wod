@@ -22,7 +22,11 @@ Este serviço oferece uma API para gerenciar treinos de CrossFit (WODs) e suas v
 git clone https://github.com/seu-usuario/daily_wod.git
 ```
 
-2. Instale as dependências do projeto:
+2. Criar o arquivo .env:
+   
+   Crie o arquivo .env com as variáveis de ambiente necessários. É possível utilizar o arquivo .env.example como exemplo.
+
+3. Instale as dependências do projeto:
 
    Para produção:
 
@@ -30,13 +34,13 @@ git clone https://github.com/seu-usuario/daily_wod.git
 pip install -r requirements.txt
 ```
 
-3. Rode os containers com Docker Compose:
+4. Rode os containers com Docker Compose:
 
 ```bash
 docker-compose up --build
 ```
 
-4. Acesse a API via Swagger UI:
+5. Acesse a API via Swagger UI:
    
    Após subir os containers, a API estará disponível em:
 
