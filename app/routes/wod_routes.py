@@ -8,7 +8,7 @@ wod_router = APIRouter()
 
 @wod_router.get("/wods",
     response_model=list[WodOut],
-    summary="Obter todos os treinos",
+    summary="Obtem todos os treinos",
     description="Recupera todos os wods salvos na base de dados",
     response_description="Detalhes dos treinos",
     tags=["Wods"],)
